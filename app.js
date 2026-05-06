@@ -117,6 +117,8 @@ class BreathingApp {
         this.statusCycles = document.getElementById('statusCycles');
         this.statusPhase = document.getElementById('statusPhase');
         this.progressFill = document.getElementById('progressFill');
+        this.sidebar = document.querySelector('.sidebar');
+        this.toggleSidebarBtn = document.getElementById('toggleSidebarBtn');
         
         // Custom settings inputs
         this.customInhale = document.getElementById('customInhale');
@@ -131,6 +133,7 @@ class BreathingApp {
         this.startBtn.addEventListener('click', () => this.startSession());
         this.pauseBtn.addEventListener('click', () => this.pauseSession());
         this.stopBtn.addEventListener('click', () => this.stopSession());
+        this.toggleSidebarBtn.addEventListener('click', () => this.toggleSidebar());
         
         // Custom settings inputs
         [this.customInhale, this.customInhaleHold, this.customExhale, this.customExhaleHold]
@@ -152,6 +155,13 @@ class BreathingApp {
         }
         
         this.saveUserPreferences();
+    }
+
+    toggleSidebar() {
+        if (!this.sidebar) return;
+        const hidden = this.sidebar.classList.toggle('hidden');
+        this.toggleSidebarBtn.textContent = hidden ? '☰' : '✕';
+        this.toggleSidebarBtn.setAttribute('aria-pressed', String(hidden));
     }
 
     updateTechniqueInfo(techniqueKey) {
