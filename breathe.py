@@ -7,8 +7,8 @@ from PyQt5.QtCore import QUrl
 class HTMLViewer(QMainWindow):
     def __init__(self, html_file):
         super().__init__()
-        self.setWindowTitle("HTML Viewer")
-        self.setGeometry(100, 100, 1200, 800)
+        self.setWindowTitle("Breathing App")
+        self.setGeometry(100, 100, 1200, 900)
         
         browser = QWebEngineView()
         browser.load(QUrl.fromLocalFile(html_file))
